@@ -1,0 +1,51 @@
+in cmd
+
+$ node -v
+
+to see if Node is installed
+
+Install NodeJS
+
+in cmd
+
+$ npm install -g create-react-app
+
+-g so its installed globally so we can run it from the terminal
+create-react-app is the package we want to install, used to create react projects
+
+$ cd to project folder
+
+To create a new project
+
+$ create-react-app project-name
+
+or
+
+$ npx create-react-app project-name
+
+cmd says:
+
+--------------------------------------------------------------------
+Success! Created jsx at C:\Users\Maria\Desktop\react\Udemy\jsx
+Inside that directory, you can run several commands:
+
+  yarn start
+    Starts the development server.
+
+  yarn build
+    Bundles the app into static files for production.
+
+  yarn test
+    Starts the test runner.
+
+  yarn eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+
+  cd jsx
+  yarn start
+
+Happy hacking!
+--------------------------------------------------------------------
