@@ -9,7 +9,17 @@ import ReactDOM from 'react-dom';
  and handles feedback from the user using event handlers
 */
 const App = () => { // a function based component
-  return <div>Hello World!</div>;
+  return ( // use brackets () for multiline returns
+    <div>
+      <label for='name' class='label'>
+        Enter name:
+      </label>
+      <input id='name' type='text' />
+      <button style={{ backgroundColor: 'blue', color:'white' }}>
+        Submit
+      </button>
+    </div>
+  );
 };
 
 // Take the react component and show it on the screen
