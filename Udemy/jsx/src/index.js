@@ -2,9 +2,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+/*
 function getButtonText() {
   return 'Click on me!';
 }
+*/
 
 // Create a react component
 /*
@@ -14,7 +16,10 @@ function getButtonText() {
 */
 const App = () => { // a function based component
 
-  // const buttonText = 'Click Me!';
+  const buttonText = 'Click Me!';
+  //const whatever = ['Hi', 'There'];
+  //const buttonText = { text: 'Click me!'};  WILL NOT WORK unless you call it by buttonText.text
+  const style = { backgroundColor: 'blue', color:'white' };
 
   return ( // use brackets () for multiline returns
     <div>
@@ -22,8 +27,8 @@ const App = () => { // a function based component
         Enter name:
       </label>
       <input id="name" type="text" />
-      <button style={{ backgroundColor: 'blue', color:'white' }}>
-        {getButtonText()}
+      <button style={style}>
+        {buttonText}
       </button>
     </div>
   );
