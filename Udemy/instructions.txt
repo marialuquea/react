@@ -49,3 +49,13 @@ We suggest that you begin by typing:
 
 Happy hacking!
 --------------------------------------------------------------------
+
+Babel translates ES2015 or up JS to ES5 so it works in any browser.
+
+To run react in cmd, cd to project folder
+
+$ npm start
+
+To see go to localhost:3000
+
+To stop it Ctrl+C in cmd
