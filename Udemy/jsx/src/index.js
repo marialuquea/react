@@ -8,8 +8,12 @@ import ReactDOM from 'react-dom';
  that produces HTML to show to the user using JSX
  and handles feedback from the user using event handlers
 */
-const App = function() {
-  return <div>Hi there!</div>;
-}
+const App = () => { // a function based component
+  return <div>Hello World!</div>;
+};
 
 // Take the react component and show it on the screen
+ReactDOM.render(
+  <App />, // first argument, the const App but in HTML form
+  document.querySelector('#root') //second argument, where to put the html
+);
