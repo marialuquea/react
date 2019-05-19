@@ -11,10 +11,10 @@ import ReactDOM from 'react-dom';
 const App = () => { // a function based component
   return ( // use brackets () for multiline returns
     <div>
-      <label for='name' class='label'>
+      <label for="name" class="label">
         Enter name:
       </label>
-      <input id='name' type='text' />
+      <input id="name" type="text" />
       <button style={{ backgroundColor: 'blue', color:'white' }}>
         Submit
       </button>
