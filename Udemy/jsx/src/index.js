@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom';
 const App = () => { // a function based component
   return ( // use brackets () for multiline returns
     <div>
-      <label for="name" class="label">
+      <label for="name" className="label">
         Enter name:
       </label>
       <input id="name" type="text" />
