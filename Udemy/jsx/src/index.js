@@ -2,6 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+function getButtonText() {
+  return 'Click on me!';
+}
+
 // Create a react component
 /*
  a react component is a function or a class
@@ -10,7 +14,7 @@ import ReactDOM from 'react-dom';
 */
 const App = () => { // a function based component
 
-  const buttonText = 'Click Me!';
+  // const buttonText = 'Click Me!';
 
   return ( // use brackets () for multiline returns
     <div>
@@ -19,7 +23,7 @@ const App = () => { // a function based component
       </label>
       <input id="name" type="text" />
       <button style={{ backgroundColor: 'blue', color:'white' }}>
-        {buttonText}
+        {getButtonText()}
       </button>
     </div>
   );
