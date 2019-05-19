@@ -9,6 +9,9 @@ import ReactDOM from 'react-dom';
  and handles feedback from the user using event handlers
 */
 const App = () => { // a function based component
+
+  const buttonText = 'Click Me!';
+
   return ( // use brackets () for multiline returns
     <div>
       <label for="name" className="label">
@@ -16,7 +19,7 @@ const App = () => { // a function based component
       </label>
       <input id="name" type="text" />
       <button style={{ backgroundColor: 'blue', color:'white' }}>
-        Submit
+        {buttonText}
       </button>
     </div>
   );
