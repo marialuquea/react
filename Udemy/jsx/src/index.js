@@ -19,15 +19,14 @@ const App = () => { // a function based component
   const buttonText = 'Click Me!';
   //const whatever = ['Hi', 'There'];
   //const buttonText = { text: 'Click me!'};  WILL NOT WORK unless you call it by buttonText.text
-  const style = { backgroundColor: 'blue', color:'white' };
 
   return ( // use brackets () for multiline returns
     <div>
-      <label for="name" className="label">
+      <label htmlFor="name" className="label">
         Enter name:
       </label>
       <input id="name" type="text" />
-      <button style={style}>
+      <button style={{ backgroundColor: 'blue', color:'white' }}>
         {buttonText}
       </button>
     </div>
