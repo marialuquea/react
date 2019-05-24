@@ -7,6 +7,10 @@ import VideoDetail from './VideoDetail';
 class App extends React.Component {
   state = { videos: [], selectedVideo: null };
 
+  componentDidMount() {
+    this.onTermSubmit('deep learning'); //default search term of DL in homepage
+  }
+
   onTermSubmit = async (term) => {
     console.log(term);
     const response = await youtube.get('/search', {
@@ -14,11 +18,9 @@ class App extends React.Component {
         q: term
       }
     });
-
     console.log(response); //the response when we search for something
     // but from the response we are interested in response.data.items
     // because it contains a list of results for what we're looking
-
     this.setState({
       videos: response.data.items,
       selectedVideo: response.data.items[0] //default video as soon as user does a search
