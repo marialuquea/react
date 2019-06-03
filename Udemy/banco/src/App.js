@@ -127,9 +127,20 @@ class App extends Component {
 
     if (formData.my_radio === '1'){
       console.log('ESPACIO');
+      this.renderContent('1');
     }
     else {
       console.log('RECURSO');
+      this.renderContent('0');
+    }
+  }
+
+  renderContent(value) {
+    if (value === '0'){
+      console.log('OLE RECURSO');
+    }
+    else {
+      console.log('OLE ESPACIO');
     }
   }
 
