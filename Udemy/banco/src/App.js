@@ -10,6 +10,8 @@ import Radio from './components/Radio';
 import Checkbox from './components/Checkbox';
 import Password from './components/Password';
 
+import Espacios from './tipos/espacios';
+
 class App extends Component {
   constructor() {
     super();
@@ -125,22 +127,21 @@ class App extends Component {
     console.dir(formData);
     console.log('value in Submit: ', formData.my_radio);
 
-    if (formData.my_radio === '1'){
-      console.log('ESPACIO');
-      this.renderContent('1');
-    }
-    else {
-      console.log('RECURSO');
-      this.renderContent('0');
-    }
+    this.renderContent(formData.my_radio);
+
   }
 
   renderContent(value) {
     if (value === '0'){
       console.log('OLE RECURSO');
+      return <div>Recursos listado</div>
+    }
+    else if (value === '1') {
+      console.log('OLE ESPACIO');
+      return <Espacios />
     }
     else {
-      console.log('OLE ESPACIO');
+      console.log('NOTHING YET');
     }
   }
 
@@ -159,8 +160,9 @@ class App extends Component {
                   valid={this.state.formControls.my_radio.valid}
           />
         </div>
-
+        { this.renderContent(this.state.formControls.my_radio.value) }
         <div>
+        <br /><br /><br /><br />
         <TextInput name="name"
                    placeholder={this.state.formControls.name.placeholder}
                    value={this.state.formControls.name.value}
