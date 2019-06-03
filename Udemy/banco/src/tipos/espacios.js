@@ -10,7 +10,7 @@ class Espacios extends Component {
       formIsValid: false,
       formControls: {
 
-        espacio: {
+        espacio: { // Select inicial
           value: '',
           placeholder: 'Elige el tipo de espacio',
           valid: false,
@@ -27,7 +27,7 @@ class Espacios extends Component {
             { value: 'reuniones', displayValue: 'Salas de reuniones' }
           ]
         },
-        usos_multiples_opciones: {
+        usos_multiples_opciones: { // Select para usos multiples
           value: '',
           placeholder: 'Elige el tipo de usos multiples',
           valid: false,
@@ -39,6 +39,32 @@ class Espacios extends Component {
             { value: 'sala1', displayValue: 'I Sala de Teatro/Danza (min 1 persona)' },
             { value: 'sala2', displayValue: 'II Sala (min 5 personas)'},
             { value: 'sala3', displayValue: 'III Sala de Teatro/Danza (min 5 personas)' }
+          ]
+        },
+        naranja_azul_opciones: { // Select sala azul o naranja
+          value: '',
+          placeholder: 'Elige el tipo de sala',
+          valid: false,
+          touched: false,
+          validationRules: {
+            isRequired: true,
+          },
+          options: [
+            { value: 'naranja', displayValue: 'Sala naranja (min 5 personas)' },
+            { value: 'azul', displayValue: 'Sala azul (min 1 persona)'}
+          ]
+        },
+        patios_opciones: { // Select inicial
+          value: '',
+          placeholder: 'Elige el tipo de patio',
+          valid: false,
+          touched: false,
+          validationRules: {
+            isRequired: true,
+          },
+          options: [
+            { value: 'principal', displayValue: 'Patio principal' },
+            { value: 'trasero', displayValue: 'Patio trasero'}
           ]
         }
       }
@@ -90,6 +116,28 @@ class Espacios extends Component {
                 options={this.state.formControls.usos_multiples_opciones.options}
                 touched={this.state.formControls.usos_multiples_opciones.touched}
                 valid={this.state.formControls.usos_multiples_opciones.valid}
+        />
+      );
+    }
+    if (value === 'naranja_azul') {
+      return (
+        <Select name="naranja_azul_opciones"
+                value={this.state.formControls.naranja_azul_opciones.value}
+                onChange={this.changeHandler}
+                options={this.state.formControls.naranja_azul_opciones.options}
+                touched={this.state.formControls.naranja_azul_opciones.touched}
+                valid={this.state.formControls.naranja_azul_opciones.valid}
+        />
+      );
+    }
+    if (value === 'patios') {
+      return (
+        <Select name="patios_opciones"
+                value={this.state.formControls.patios_opciones.value}
+                onChange={this.changeHandler}
+                options={this.state.formControls.patios_opciones.options}
+                touched={this.state.formControls.patios_opciones.touched}
+                valid={this.state.formControls.patios_opciones.valid}
         />
       );
     }

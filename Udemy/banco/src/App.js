@@ -7,7 +7,6 @@ import TextArea from './components/TextArea';
 import Email from './components/Email';
 import Select from './components/Select';
 import Radio from './components/Radio';
-import Checkbox from './components/Checkbox';
 import Password from './components/Password';
 
 import Espacios from './tipos/espacios';
