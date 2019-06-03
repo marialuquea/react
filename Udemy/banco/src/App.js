@@ -125,28 +125,12 @@ class App extends Component {
     console.dir(formData);
     console.log('value in Submit: ', formData.my_radio);
 
-    if (formData.my_radio === 1) {
-      console.log('submit ESPACIO');
-      //renderContent(1);
-      this.renderContent('1');
-    }
-    else {
-      console.log('submit RECURSO');
-      //renderContent(0);
-      this.renderContent('0');
-    }
-  }
-
-
-  renderContent(value) {
-    console.log('value in renderContent: ' + { value });
-    if (value === '0'){ // if recurso
-      console.log('RECURSO');
-    }
-    else {            // if espacio
+    if (formData.my_radio === '1'){
       console.log('ESPACIO');
     }
-
+    else {
+      console.log('RECURSO');
+    }
   }
 
 
