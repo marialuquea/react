@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 
-import TextInput from './TextInput';
-import validate from './validate';
-import TextArea from './TextArea';
-import Email from './Email';
-import Select from './Select';
-import Radio from './Radio';
+import TextInput from './components/TextInput';
+import validate from './components/validate';
+import TextArea from './components/TextArea';
+import Email from './components/Email';
+import Select from './components/Select';
+import Radio from './components/Radio';
+import Checkbox from './components/Checkbox';
+import Password from './components/Password';
 
 class App extends Component {
-  
-
   constructor() {
     super();
-
     this.state = {
       formIsValid: false,
       formControls: {
-        
+
         name: {
           value: '',
           placeholder: 'What is your name',
@@ -70,22 +69,30 @@ class App extends Component {
             isRequired: true,
           },
           options: [
-            { value: 0, displayValue: 'No' },
-            { value: 1, displayValue: 'Yes' }
+            { value: 0, displayValue: 'Recurso' },
+            { value: 1, displayValue: 'Espacio' }
           ]
+        },
+        password: {
+          value: '',
+          placeholder: 'Password',
+          valid: false,
+          touched: false,
+          validationRules: {
+            isRequired: true,
+            minLength: 5,
+            maxLength: 10
+          }
         }
-        
       }
-
     }
   }
 
 
+
   changeHandler = event => {
-    
       const name = event.target.name;
       const value = event.target.value;
-
       const updatedControls = {
         ...this.state.formControls
       };
@@ -95,81 +102,114 @@ class App extends Component {
       updatedFormElement.value = value;
       updatedFormElement.touched = true;
       updatedFormElement.valid = validate(value, updatedFormElement.validationRules);
-
       updatedControls[name] = updatedFormElement;
-
       let formIsValid = true;
       for (let inputIdentifier in updatedControls) {
         formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
       }
-
       this.setState({
         formControls: updatedControls,
         formIsValid: formIsValid
       });
-
   }
-  
-  
+
+
+
+
+
   formSubmitHandler = () => {
 		const formData = {};
 		for (let formElementId in this.state.formControls) {
 			formData[formElementId] = this.state.formControls[formElementId].value
     }
-    
     console.dir(formData);
+    console.log('value in Submit: ', formData.my_radio);
+
+    if (formData.my_radio === 1) {
+      console.log('submit ESPACIO');
+      //renderContent(1);
+      this.renderContent('1');
+    }
+    else {
+      console.log('submit RECURSO');
+      //renderContent(0);
+      this.renderContent('0');
+    }
   }
-  
+
+
+  renderContent(value) {
+    console.log('value in renderContent: ' + { value });
+    if (value === '0'){ // if recurso
+      console.log('RECURSO');
+    }
+    else {            // if espacio
+      console.log('ESPACIO');
+    }
+
+  }
+
 
   render() {
-    
     return (
       <div className="App">
-          <TextInput name="name" 
-                     placeholder={this.state.formControls.name.placeholder}
-                     value={this.state.formControls.name.value}
-                     onChange={this.changeHandler}
-                     touched={this.state.formControls.name.touched}
-                     valid={this.state.formControls.name.valid}
-          />
-
-          <TextArea name="address"
-                    placeholder={this.state.formControls.address.placeholder}
-                    value={this.state.formControls.address.value}
-                    onChange={this.changeHandler}
-                    touched={this.state.formControls.address.touched}
-                    valid={this.state.formControls.address.valid}
-          />
-
-          <Email name="my_email"
-                  placeholder={this.state.formControls.my_email.placeholder}
-                  value={this.state.formControls.my_email.value}
-                  onChange={this.changeHandler}
-                  touched={this.state.formControls.my_email.touched}
-                  valid={this.state.formControls.my_email.valid}
-          />
-
-          <Select name="gender"
-                  value={this.state.formControls.gender.value}
-                  onChange={this.changeHandler}
-                  options={this.state.formControls.gender.options}
-                  touched={this.state.formControls.gender.touched}
-                  valid={this.state.formControls.gender.valid}
-          />
-
+        <h1>Banco de Recursos</h1>
+        <div>
+          <p>¿Qué necesitas?</p>
           <Radio name="my_radio"
-            value={this.state.formControls.my_radio.value}
-            onChange={this.changeHandler}
-            options={this.state.formControls.my_radio.options}
-            touched={this.state.formControls.my_radio.touched}
-            valid={this.state.formControls.my_radio.valid}
+                  value={this.state.formControls.my_radio.value}
+                  onChange={this.changeHandler}
+                  options={this.state.formControls.my_radio.options}
+                  touched={this.state.formControls.my_radio.touched}
+                  valid={this.state.formControls.my_radio.valid}
           />
+        </div>
 
-          <button onClick={this.formSubmitHandler} 
+        <div>
+        <TextInput name="name"
+                   placeholder={this.state.formControls.name.placeholder}
+                   value={this.state.formControls.name.value}
+                   onChange={this.changeHandler}
+                   touched={this.state.formControls.name.touched}
+                   valid={this.state.formControls.name.valid}
+        />
+
+        <TextArea name="address"
+                  placeholder={this.state.formControls.address.placeholder}
+                  value={this.state.formControls.address.value}
+                  onChange={this.changeHandler}
+                  touched={this.state.formControls.address.touched}
+                  valid={this.state.formControls.address.valid}
+        />
+
+        <Email name="my_email"
+                placeholder={this.state.formControls.my_email.placeholder}
+                value={this.state.formControls.my_email.value}
+                onChange={this.changeHandler}
+                touched={this.state.formControls.my_email.touched}
+                valid={this.state.formControls.my_email.valid}
+        />
+
+        <Select name="gender"
+                value={this.state.formControls.gender.value}
+                onChange={this.changeHandler}
+                options={this.state.formControls.gender.options}
+                touched={this.state.formControls.gender.touched}
+                valid={this.state.formControls.gender.valid}
+        />
+
+        <Password name="password"
+                placeholder={this.state.formControls.password.placeholder}
+                value={this.state.formControls.password.value}
+                onChange={this.changeHandler}
+                touched={this.state.formControls.password.touched}
+                valid={this.state.formControls.password.valid}
+        />
+        </div>
+
+          <button onClick={this.formSubmitHandler}
                   disabled={! this.state.formIsValid}
-            > 
-              Submit
-          </button>
+          >Submit</button>
       </div>
     );
 
