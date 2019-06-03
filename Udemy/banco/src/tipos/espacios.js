@@ -4,12 +4,15 @@ import Select from '../components/Select';
 import validate from '../components/validate';
 
 class Espacios extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       formIsValid: false,
       formControls: {
-
+        // TODO:
+        //
+        // usar los props pasados en line 65 de App.js
+        
         espacio: { // Select inicial
           value: '',
           placeholder: 'Elige el tipo de espacio',
@@ -144,6 +147,16 @@ class Espacios extends Component {
   }
 
 
+  formSubmitHandler = () => {
+    const formData = {};
+    for (let formElementId in this.state.formControls) {
+      formData[formElementId] = this.state.formControls[formElementId].value
+    }
+    console.dir(formData);
+
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -157,6 +170,10 @@ class Espacios extends Component {
         />
 
         { this.renderMoreOptions(this.state.formControls.espacio.value) }
+        <br />
+        <br />
+        <button onClick={this.formSubmitHandler}
+        >Siguiente</button>
 
       </div>
     );
