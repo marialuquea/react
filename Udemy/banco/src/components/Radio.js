@@ -9,17 +9,18 @@ const Radio = props => {
     }
 
     return (
-        <div className="form-group">
+        <div>
 
             {props.options.map(option => (
-                <div className="form-group" key={option.value}>
-                    <label>{option.displayValue}</label>
-                    <input type="radio"
-                        name={props.name}
-                        value={option.value}
-                        onChange={props.onChange}
-                        className={formControl}
-                    />
+                <div key={option.value}>
+                    <label className="container">{option.displayValue}
+                      <input type="radio"
+                          name={props.name}
+                          value={option.value}
+                          onChange={props.onChange}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
                 </div>
             ))}
 

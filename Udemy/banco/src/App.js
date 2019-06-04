@@ -62,7 +62,7 @@ class App extends Component {
     }
     else if (value === '1') {
       console.log('OLE ESPACIO');
-      return <Espacios />
+      return <Espacios espacio_recurso={ value } />
     }
     else {
       console.log('NOTHING YET');
@@ -72,9 +72,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <h1>Banco de Recursos</h1>
-        <div>
+        <div className="App">
           <p>¿Qué necesitas?</p>
           <Radio name="tipo_recurso"
                   value={this.state.formControls.tipo_recurso.value}

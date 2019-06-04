@@ -9,14 +9,19 @@ const Select = props => {
     }
 
     return (
-        <div className="form-group">
-            <select name={props.name} className={formControl} value={props.value} onChange={props.onChange}>
+        <div>
+            <select
+              name={props.name}
+              value={props.value}
+              onChange={props.onChange}
+            >
                 {props.options.map(option => (
                     <option key={option.value} value={option.value}>
                         {option.displayValue}
                     </option>
                 ))}
             </select>
+
         </div>
     );
 }

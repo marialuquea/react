@@ -12,7 +12,7 @@ class Espacios extends Component {
         // TODO:
         //
         // usar los props pasados en line 65 de App.js
-        
+
         espacio: { // Select inicial
           value: '',
           placeholder: 'Elige el tipo de espacio',
