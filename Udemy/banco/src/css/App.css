@@ -5,20 +5,10 @@ body {
 
 .App {
   text-align: center;
-  margin-top: 25px;
+  margin: 25px 5%;
   border: 2px solid white;
   border-radius: 30px;
   padding: 30px;
-}
-
-.form-control {
-  width: 50%;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
-.control-error {
-  border: 1px solid red;
 }
 
 
@@ -36,7 +26,7 @@ button { /*All buttons, encipher and decipher*/
   background-color: #e7e7e7;
   border: 2px solid #e7e7e7;
   font-family: 'ABeeZee';
-  margin-left: 10%;
+  color: #F19F67;
 }
 button:hover {
   background-color: Transparent;
@@ -127,4 +117,13 @@ p {
 	height: 8px;
 	border-radius: 50%;
 	background: white;
+}
+
+select {
+  padding: 20px;
+  border-radius: 14px;
+  font-family: 'ABeeZee';
+  font-size: 14px;
+  width: 300px;
+  margin: 10px 0;
 }
