@@ -4,6 +4,8 @@ import Select from '../components/Select';
 import validate from '../components/validate';
 import Fechas from './fechas.js';
 
+const nothing = '---';
+
 class Espacios extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ class Espacios extends Component {
         // usar los props pasados en line 65 de App.js
 
         espacio: { // Select inicial
-          value: '---',
+          value: nothing,
           placeholder: 'Elige el tipo de espacio',
           valid: false,
           touched: false,
@@ -32,7 +34,7 @@ class Espacios extends Component {
           ]
         },
         usos_multiples_opciones: { // Select para usos multiples
-          value: '---',
+          value: nothing,
           placeholder: 'Elige el tipo de usos multiples',
           valid: false,
           touched: false,
@@ -46,7 +48,7 @@ class Espacios extends Component {
           ]
         },
         naranja_azul_opciones: { // Select sala azul o naranja
-          value: '---',
+          value: nothing,
           placeholder: 'Elige el tipo de sala',
           valid: false,
           touched: false,
@@ -59,7 +61,7 @@ class Espacios extends Component {
           ]
         },
         patios_opciones: { // Select inicial
-          value: '---',
+          value: nothing,
           placeholder: 'Elige el tipo de patio',
           valid: false,
           touched: false,
@@ -77,17 +79,21 @@ class Espacios extends Component {
 
 
   changeHandler = event => {
+
+      this.resetValues();
+
       const name = event.target.name;
       const value = event.target.value;
 
-      console.log(value);
+      console.log('value: ', value);
 
-      const updatedControls = {
-        ...this.state.formControls
-      };
-      const updatedFormElement = {
-        ...updatedControls[name]
-      };
+      const updatedControls = { ...this.state.formControls  };
+      const updatedFormElement = {  ...updatedControls[name]  };
+
+      console.log('updatedControls: ',  this.state.formControls);
+      console.log('');
+      console.log('updatedFormElement: ', updatedControls[name]);
+
       updatedFormElement.value = value;
       updatedFormElement.touched = true;
       updatedFormElement.valid = validate(value, updatedFormElement.validationRules);
@@ -102,14 +108,21 @@ class Espacios extends Component {
         formIsValid: formIsValid
       });
 
-      /*
-      const formData = {};
-      for (let formElementId in this.state.formControls) {
-  			formData[formElementId] = this.state.formControls[formElementId].value
-      }
-      console.dir(formData);
-      */
   }
+
+
+  resetValues() {
+    const names = ['usos_multiples_opciones', 'naranja_azul_opciones', 'patios_opciones'];
+    const updatedControls = { ...this.state.formControls  };
+    for (const name in names) {
+      updatedControls[names[name]].value = nothing;
+    }
+    this.setState({
+      formControls: updatedControls
+    });
+  }
+
+
 
   renderMoreOptions(value) {
     if (value === 'usos_multiples') {
@@ -159,10 +172,6 @@ class Espacios extends Component {
       formData[formElementId] = this.state.formControls[formElementId].value
     }
     console.dir(formData);
-
-    //this.choose_dates(this.state.formControls.patios_opciones.value);
-
-    //console.log(this.state.formControls.patios_opciones.value);
   }
 
 

@@ -14,17 +14,9 @@ class Fechas extends React.Component {
     };
   }
 
-  handleStartDate(data) {
-    this.setState({
-      startDate: data
-    });
-  }
+  handleStartDate(data) { this.setState({ startDate: data }); }
 
-  handleEndDate(data) {
-    this.setState({
-      endDate: data
-    });
-  }
+  handleEndDate(data) { this.setState({ endDate: data }); }
 
   render() {
     return (
