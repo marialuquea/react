@@ -23,7 +23,7 @@ class Fechas extends React.Component {
     return (
         <div>
           <h5>Received by parent:<br />{this.state.fromChild}</h5>
-          <DateRangeExample handlerFromParant={this.handleData}  />
+          <DateRangeExample startDate={this.handleData}  />
         </div>
     );
   }

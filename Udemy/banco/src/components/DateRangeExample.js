@@ -53,41 +53,17 @@ class Example extends React.Component {
     this.state = {
       value: moment.range(today.clone(), today.clone())
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
-
   }
-
-
-  submitHandler(evt) {
-    evt.preventDefault();
-    // pass the inputField value to the event handler passed
-    // as a prop by the parent (App)
-    this.props.handlerFromParant(this.state.value);
-
-    this.setState({
-      value: ''
-    });
-  }
-
-
-  handleChange(event) {
-    this.setState({
-      value: event.target.value
-    });
-  }
-
 
   onSelect = (value, states) => {
     this.setState({ value, states });
-    this.props.handlerFromParant('FUNCIONA');
+    this.props.startDate('FUNCIONA');
+    console.log('Start date: ', this.state.value.start.format("DD-MM-YYYY"));
+    console.log('End date: ', this.state.value.end.format("DD-MM-YYYY"));
   };
 
 
   renderSelectionValue = () => {
-    console.log('Start date: ', this.state.value.start.format("DD-MM-YYYY"));
-    console.log('End date: ', this.state.value.end.format("DD-MM-YYYY"));
 
     return (
       <div>
@@ -120,7 +96,6 @@ class Example extends React.Component {
             defaultState="available"
             showLegend={true}
         />}
-        <button onClick={this.props.triggerParentUpdate}>Siguiente</button>
       </div>
     );
   }
