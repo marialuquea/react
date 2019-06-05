@@ -57,7 +57,8 @@ class Example extends React.Component {
 
   onSelect = (value, states) => {
     this.setState({ value, states });
-    this.props.startDate('FUNCIONA');
+    this.props.startDate(this.state.value.start.format("DD-MM-YYYY"));
+    this.props.endDate(this.state.value.end.format("DD-MM-YYYY"));
     console.log('Start date: ', this.state.value.start.format("DD-MM-YYYY"));
     console.log('End date: ', this.state.value.end.format("DD-MM-YYYY"));
   };

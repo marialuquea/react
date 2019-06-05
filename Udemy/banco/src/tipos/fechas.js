@@ -6,24 +6,38 @@ import DateRangeExample from "../components/DateRangeExample";
 class Fechas extends React.Component {
   constructor(){
     super();
-    this.handleData = this.handleData.bind(this);
+    this.handleStartDate = this.handleStartDate.bind(this);
+    this.handleEndDate = this.handleEndDate.bind(this);
     this.state = {
-      fromChild: ''
+      startDate: '',
+      endDate: ''
     };
   }
 
-  handleData(data) {
+  handleStartDate(data) {
     this.setState({
-      fromChild: data
+      startDate: data
     });
   }
 
+  handleEndDate(data) {
+    this.setState({
+      endDate: data
+    });
+  }
 
   render() {
     return (
         <div>
-          <h5>Received by parent:<br />{this.state.fromChild}</h5>
-          <DateRangeExample startDate={this.handleData}  />
+          <h5>Received by parent:<br />
+            {this.state.startDate}
+            {' - '}
+            {this.state.endDate}
+          </h5>
+          <DateRangeExample
+            startDate={this.handleStartDate}
+            endDate={this.handleEndDate}
+          />
         </div>
     );
   }
