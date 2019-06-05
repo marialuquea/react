@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Select from '../components/Select';
 import validate from '../components/validate';
+import Fechas from './fechas.js';
 
 class Espacios extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Espacios extends Component {
         // usar los props pasados en line 65 de App.js
 
         espacio: { // Select inicial
-          value: '',
+          value: '---',
           placeholder: 'Elige el tipo de espacio',
           valid: false,
           touched: false,
@@ -31,7 +32,7 @@ class Espacios extends Component {
           ]
         },
         usos_multiples_opciones: { // Select para usos multiples
-          value: '',
+          value: '---',
           placeholder: 'Elige el tipo de usos multiples',
           valid: false,
           touched: false,
@@ -45,7 +46,7 @@ class Espacios extends Component {
           ]
         },
         naranja_azul_opciones: { // Select sala azul o naranja
-          value: '',
+          value: '---',
           placeholder: 'Elige el tipo de sala',
           valid: false,
           touched: false,
@@ -58,7 +59,7 @@ class Espacios extends Component {
           ]
         },
         patios_opciones: { // Select inicial
-          value: '',
+          value: '---',
           placeholder: 'Elige el tipo de patio',
           valid: false,
           touched: false,
@@ -146,6 +147,11 @@ class Espacios extends Component {
     }
   }
 
+  choose_dates(value) {
+    console.log('choose_dates en espacios.js');
+    return <Fechas />
+  }
+
 
   formSubmitHandler = () => {
     const formData = {};
@@ -154,6 +160,9 @@ class Espacios extends Component {
     }
     console.dir(formData);
 
+    //this.choose_dates(this.state.formControls.patios_opciones.value);
+
+    //console.log(this.state.formControls.patios_opciones.value);
   }
 
 
@@ -171,9 +180,9 @@ class Espacios extends Component {
 
         { this.renderMoreOptions(this.state.formControls.espacio.value) }
         <br />
+        { this.choose_dates(this.state.formControls.patios_opciones.value) }
         <br />
-        <button onClick={this.formSubmitHandler}
-        >Siguiente</button>
+        <button onClick={this.formSubmitHandler}>Siguiente</button>
 
       </div>
     );
