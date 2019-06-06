@@ -32,6 +32,11 @@ button:hover {
   background-color: Transparent;
   color: #e7e7e7;
 }
+button:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 
 h1 {
   font-family: 'Amatic SC';

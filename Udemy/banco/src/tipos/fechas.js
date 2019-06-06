@@ -4,8 +4,8 @@ import DateRangeExample from "../components/DateRangeExample";
 
 
 class Fechas extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.handleStartDate = this.handleStartDate.bind(this);
     this.handleEndDate = this.handleEndDate.bind(this);
     this.state = {
@@ -14,14 +14,19 @@ class Fechas extends React.Component {
     };
   }
 
+  // Receiving from DateRangeExample
   handleStartDate(data) { this.setState({ startDate: data }); }
-
   handleEndDate(data) { this.setState({ endDate: data }); }
+
+  // Sending to Espacios
+  onSelect = (value, states) => {
+    this.setState()
+  };
 
   render() {
     return (
         <div>
-          <h5>Received by parent:<br />
+          <h5>Received in fechas:<br />
             {this.state.startDate}
             {' - '}
             {this.state.endDate}

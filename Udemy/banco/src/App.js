@@ -57,11 +57,10 @@ class App extends Component {
 
   renderContent(value) {
     if (value === '0'){
-      console.log('RECURSO');
       return <div>Recursos listado</div>
     }
     else if (value === '1') {
-      return <Espacios espacio_recurso={ value } />
+      return <Espacios />
     }
   }
 

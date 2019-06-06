@@ -45,8 +45,8 @@ const dateRanges = [
 ];
 
 class Example extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     const today = moment();
 
@@ -59,19 +59,18 @@ class Example extends React.Component {
     this.setState({ value, states });
     this.props.startDate(this.state.value.start.format("DD-MM-YYYY"));
     this.props.endDate(this.state.value.end.format("DD-MM-YYYY"));
-    console.log('Start date: ', this.state.value.start.format("DD-MM-YYYY"));
-    console.log('End date: ', this.state.value.end.format("DD-MM-YYYY"));
   };
 
 
   renderSelectionValue = () => {
 
+    const date = this.state.value.start.format("DD-MM-YYYY") + " - " + this.state.value.end.format("DD-MM-YYYY");
+    //console.log('date: ', date);
+
     return (
       <div>
         <div>Fechas elegidas:</div>
-        {this.state.value.start.format("DD-MM-YYYY")}
-        {" - "}
-        {this.state.value.end.format("DD-MM-YYYY")}
+         { date }
       </div>
     );
   };

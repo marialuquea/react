@@ -4,18 +4,16 @@ import Select from '../components/Select';
 import validate from '../components/validate';
 import Fechas from './fechas.js';
 
-const nothing = '---';
+const nothing = '';
 
 class Espacios extends Component {
   constructor(props) {
     super(props);
+    this.handleStartDate = this.handleStartDate.bind(this);
+    this.handleEndDate = this.handleEndDate.bind(this);
     this.state = {
       formIsValid: false,
       formControls: {
-        // TODO:
-        //
-        // usar los props pasados en line 65 de App.js
-
         espacio: { // Select inicial
           value: nothing,
           placeholder: 'Elige el tipo de espacio',
@@ -36,10 +34,10 @@ class Espacios extends Component {
         usos_multiples_opciones: { // Select para usos multiples
           value: nothing,
           placeholder: 'Elige el tipo de usos multiples',
-          valid: false,
+          valid: true,
           touched: false,
           validationRules: {
-            isRequired: true,
+            //isRequired: true,
           },
           options: [
             { value: 'sala1', displayValue: 'I Sala de Teatro/Danza (min 1 persona)' },
@@ -50,28 +48,39 @@ class Espacios extends Component {
         naranja_azul_opciones: { // Select sala azul o naranja
           value: nothing,
           placeholder: 'Elige el tipo de sala',
-          valid: false,
+          valid: true,
           touched: false,
           validationRules: {
-            isRequired: true,
+            //isRequired: true,
           },
           options: [
             { value: 'naranja', displayValue: 'Sala naranja (min 5 personas)' },
             { value: 'azul', displayValue: 'Sala azul (min 1 persona)'}
           ]
         },
-        patios_opciones: { // Select inicial
+        patios_opciones: { // Select de patios
           value: nothing,
           placeholder: 'Elige el tipo de patio',
-          valid: false,
+          valid: true,
           touched: false,
           validationRules: {
-            isRequired: true,
+            //isRequired: true,
           },
           options: [
             { value: 'principal', displayValue: 'Patio principal' },
             { value: 'trasero', displayValue: 'Patio trasero'}
           ]
+        },
+
+        dates: {
+          value: '',
+          startDate: '',
+          endDate: '',
+          valid: true,
+          touched: false,
+          validationRules: {
+            isRequired: true
+          }
         }
       }
     }
@@ -85,28 +94,32 @@ class Espacios extends Component {
       const name = event.target.name;
       const value = event.target.value;
 
-      console.log('value: ', value);
+      //console.log('value: ', value);
 
       const updatedControls = { ...this.state.formControls  };
       const updatedFormElement = {  ...updatedControls[name]  };
 
-      console.log('updatedControls: ',  this.state.formControls);
-      console.log('');
-      console.log('updatedFormElement: ', updatedControls[name]);
+      //console.log('updatedControls: ',  this.state.formControls);
+      //console.log('');
+      //console.log('updatedFormElement: ', updatedControls[name]);
 
       updatedFormElement.value = value;
       updatedFormElement.touched = true;
       updatedFormElement.valid = validate(value, updatedFormElement.validationRules);
+      //console.log('validate: ', validate(value, updatedFormElement.validationRules));
+      //console.log('uFE: ', updatedFormElement.valid);
       updatedControls[name] = updatedFormElement;
 
       let formIsValid = true;
       for (let inputIdentifier in updatedControls) {
         formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+        //console.log('1: ', updatedControls[inputIdentifier].valid && formIsValid);
       }
       this.setState({
         formControls: updatedControls,
         formIsValid: formIsValid
       });
+      //console.log('this.state.formIsValid: ', this.state.formIsValid);
 
   }
 
@@ -161,10 +174,14 @@ class Espacios extends Component {
   }
 
   choose_dates(value) {
-    console.log('choose_dates en espacios.js');
-    return <Fechas />
+    //console.log('choose_dates en espacios.js');
+    return <Fechas startDate={this.handleStartDate} endDate={this.handleEndDate}/>
   }
 
+
+  handleStartDate(data) { this.setState({ startDate: data }); }
+
+  handleEndDate(data) { this.setState({ endDate: data }); }
 
   formSubmitHandler = () => {
     const formData = {};
@@ -186,13 +203,22 @@ class Espacios extends Component {
                 touched={this.state.formControls.espacio.touched}
                 valid={this.state.formControls.espacio.valid}
         />
+        <br />
+        <h5>Received in espacios:<br />
+          {this.state.startDate}
+          {' - '}
+          {this.state.endDate}
+        </h5>
+        <br />
 
         { this.renderMoreOptions(this.state.formControls.espacio.value) }
         <br />
         { this.choose_dates(this.state.formControls.patios_opciones.value) }
         <br />
-        <button onClick={this.formSubmitHandler}>Siguiente</button>
-
+        <button
+          onClick={this.formSubmitHandler}
+          disabled={! this.state.formIsValid} >Siguiente
+        </button>
       </div>
     );
 
