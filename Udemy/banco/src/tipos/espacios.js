@@ -9,7 +9,7 @@ const nothing = '---';
 class Espacios extends Component {
   constructor(props) {
     super(props);
-    this.handleDates = this.handleDates.bind(this);
+    this.handleDatesE = this.handleDatesE.bind(this);
     this.state = {
       formIsValid: false,
       formControls: {
@@ -174,7 +174,7 @@ class Espacios extends Component {
     }
   }
 
-  handleDates(data) {
+  handleDatesE(data) {
     const updatedControls = { ...this.state.formControls  };
     updatedControls['dates'].value = data;
     this.setState({
@@ -185,7 +185,7 @@ class Espacios extends Component {
 
   choose_dates(value) {
     //console.log('choose_dates en espacios.js');
-    return <Fechas dates={this.handleDates}/>
+    return <Fechas dates={this.handleDatesE}/>
   }
 
 
@@ -196,7 +196,6 @@ class Espacios extends Component {
       formData[formElementId] = this.state.formControls[formElementId].value
     }
     console.dir(formData);
-    console.log('aa: ', this.state.formControls[2]);
   }
 
 

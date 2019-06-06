@@ -57,7 +57,7 @@ class Example extends React.Component {
 
   onSelect = (value, states) => {
     this.setState({ value, states });
-    this.props.dates(
+    this.props.dates1(
       this.state.value.start.format("DD-MM-YYYY")
       + ' - '
       +  this.state.value.end.format("DD-MM-YYYY")
