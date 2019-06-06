@@ -125,13 +125,8 @@ class Espacios extends Component {
   resetValues() {
     const names = ['usos_multiples_opciones', 'naranja_azul_opciones', 'patios_opciones'];
     const updatedControls = { ...this.state.formControls  };
-    //console.log('updatedControls:', updatedControls);
-    //console.log(updatedControls['dates']);
     for (const i in names) {
       updatedControls[names[i]].value = nothing;
-      //console.log('names[' ,i, ']: ', names[i]);
-      //console.log('updatedControls[names[i]]: ', updatedControls[names[i]]);
-      //console.log('updatedControls[names[i]].value:', updatedControls[names[i]].value);
     }
     this.setState({
       formControls: updatedControls
@@ -184,11 +179,8 @@ class Espacios extends Component {
   }
 
   choose_dates(value) {
-    //console.log('choose_dates en espacios.js');
     return <Fechas dates={this.handleDatesE}/>
   }
-
-
 
   formSubmitHandler = () => {
     const formData = {};
@@ -211,9 +203,9 @@ class Espacios extends Component {
                 valid={this.state.formControls.espacio.valid}
         />
         <br />
-        <h5>Received in espacios:<br />
+        <p>Fechas elegidas:<br />
           {this.state.formControls['dates'].value}
-        </h5>
+        </p>
         <br />
 
         { this.renderMoreOptions(this.state.formControls.espacio.value) }
@@ -226,7 +218,6 @@ class Espacios extends Component {
         </button>
       </div>
     );
-
   }
 }
 

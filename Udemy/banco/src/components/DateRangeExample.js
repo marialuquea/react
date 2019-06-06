@@ -67,27 +67,10 @@ class Example extends React.Component {
   };
 
 
-  renderSelectionValue = () => {
-
-    const date = this.state.value.start.format("DD-MM-YYYY") + " - " + this.state.value.end.format("DD-MM-YYYY");
-    //console.log('date: ', date);
-
-    return (
-      <div>
-        <div>Fechas elegidas:</div>
-         { date }
-      </div>
-    );
-  };
-
 
   render() {
     return (
       <div>
-
-        <div>{this.renderSelectionValue()}</div>
-        <br /> <br />
-
         {<DateRangePicker
             value={this.state.value}
             onSelect={this.onSelect}
