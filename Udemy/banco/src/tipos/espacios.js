@@ -4,13 +4,12 @@ import Select from '../components/Select';
 import validate from '../components/validate';
 import Fechas from './fechas.js';
 
-const nothing = '';
+const nothing = '---';
 
 class Espacios extends Component {
   constructor(props) {
     super(props);
-    this.handleStartDate = this.handleStartDate.bind(this);
-    this.handleEndDate = this.handleEndDate.bind(this);
+    this.handleDates = this.handleDates.bind(this);
     this.state = {
       formIsValid: false,
       formControls: {
@@ -74,8 +73,7 @@ class Espacios extends Component {
 
         dates: {
           value: '',
-          startDate: '',
-          endDate: '',
+          dates: '',
           valid: true,
           touched: false,
           validationRules: {
@@ -127,15 +125,18 @@ class Espacios extends Component {
   resetValues() {
     const names = ['usos_multiples_opciones', 'naranja_azul_opciones', 'patios_opciones'];
     const updatedControls = { ...this.state.formControls  };
-    for (const name in names) {
-      updatedControls[names[name]].value = nothing;
+    //console.log('updatedControls:', updatedControls);
+    //console.log(updatedControls['dates']);
+    for (const i in names) {
+      updatedControls[names[i]].value = nothing;
+      //console.log('names[' ,i, ']: ', names[i]);
+      //console.log('updatedControls[names[i]]: ', updatedControls[names[i]]);
+      //console.log('updatedControls[names[i]].value:', updatedControls[names[i]].value);
     }
     this.setState({
       formControls: updatedControls
     });
   }
-
-
 
   renderMoreOptions(value) {
     if (value === 'usos_multiples') {
@@ -173,15 +174,25 @@ class Espacios extends Component {
     }
   }
 
+  handleDates(data) {
+    console.log('data: ', data);
+    /*
+    const updatedControls =  this.state.formControls['dates'];
+    updatedControls.value = data;
+    this.setState({
+      formControls: updatedControls
+    });
+    console.log('DID IT WORK?');
+    console.log('try: ', this.state.formControls['dates'].value);
+    */
+  }
+
   choose_dates(value) {
     //console.log('choose_dates en espacios.js');
-    return <Fechas startDate={this.handleStartDate} endDate={this.handleEndDate}/>
+    return <Fechas dates={this.handleDates}/>
   }
 
 
-  handleStartDate(data) { this.setState({ startDate: data }); }
-
-  handleEndDate(data) { this.setState({ endDate: data }); }
 
   formSubmitHandler = () => {
     const formData = {};
@@ -189,6 +200,7 @@ class Espacios extends Component {
       formData[formElementId] = this.state.formControls[formElementId].value
     }
     console.dir(formData);
+    console.log('aa: ', this.state.formControls[2]);
   }
 
 
