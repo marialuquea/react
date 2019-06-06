@@ -212,9 +212,7 @@ class Espacios extends Component {
         />
         <br />
         <h5>Received in espacios:<br />
-          {this.state.startDate}
-          {' - '}
-          {this.state.endDate}
+          {this.state.formControls['dates'].value}
         </h5>
         <br />
 
