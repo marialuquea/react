@@ -175,16 +175,12 @@ class Espacios extends Component {
   }
 
   handleDates(data) {
-    console.log('data: ', data);
-    /*
-    const updatedControls =  this.state.formControls['dates'];
-    updatedControls.value = data;
+    const updatedControls = { ...this.state.formControls  };
+    updatedControls['dates'].value = data;
     this.setState({
       formControls: updatedControls
     });
-    console.log('DID IT WORK?');
     console.log('try: ', this.state.formControls['dates'].value);
-    */
   }
 
   choose_dates(value) {
