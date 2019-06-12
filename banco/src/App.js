@@ -81,7 +81,6 @@ class App extends Component {
         </div>
         { this.renderContent(this.state.formControls.tipo_recurso.value) }
 
-
       </div>
     );
 

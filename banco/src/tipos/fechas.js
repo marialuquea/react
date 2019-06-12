@@ -12,7 +12,7 @@ class Fechas extends React.Component {
   render() {
     return (
         <div>
-          <DateRangeExample dates={this.onSelect} />
+          <DateRangeExample dates={this.onSelect} />;
         </div>
     );
   }

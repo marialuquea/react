@@ -91,33 +91,22 @@ class Espacios extends Component {
 
       const name = event.target.name;
       const value = event.target.value;
-
-      //console.log('value: ', value);
-
       const updatedControls = { ...this.state.formControls  };
       const updatedFormElement = {  ...updatedControls[name]  };
-
-      //console.log('updatedControls: ',  this.state.formControls);
-      //console.log('');
-      //console.log('updatedFormElement: ', updatedControls[name]);
 
       updatedFormElement.value = value;
       updatedFormElement.touched = true;
       updatedFormElement.valid = validate(value, updatedFormElement.validationRules);
-      //console.log('validate: ', validate(value, updatedFormElement.validationRules));
-      //console.log('uFE: ', updatedFormElement.valid);
       updatedControls[name] = updatedFormElement;
 
       let formIsValid = true;
       for (let inputIdentifier in updatedControls) {
         formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
-        //console.log('1: ', updatedControls[inputIdentifier].valid && formIsValid);
       }
       this.setState({
         formControls: updatedControls,
         formIsValid: formIsValid
       });
-      //console.log('this.state.formIsValid: ', this.state.formIsValid);
 
   }
 
@@ -203,19 +192,22 @@ class Espacios extends Component {
                 valid={this.state.formControls.espacio.valid}
         />
         <br />
+        { this.renderMoreOptions(this.state.formControls.espacio.value) }
+
+        <br />
         <p>Fechas elegidas:<br />
           {this.state.formControls['dates'].value}
         </p>
-        <br />
 
-        { this.renderMoreOptions(this.state.formControls.espacio.value) }
         <br />
         { this.choose_dates(this.state.formControls.patios_opciones.value) }
+
         <br />
         <button
           onClick={this.formSubmitHandler}
           disabled={! this.state.formIsValid} >Siguiente
         </button>
+        
       </div>
     );
   }
