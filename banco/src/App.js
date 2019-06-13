@@ -5,6 +5,7 @@ import validate from './components/validate';
 import Radio from './components/Radio';
 
 import Espacios from './tipos/espacios';
+import Recursos from './tipos/recursos';
 
 class App extends Component {
   constructor() {
@@ -57,7 +58,7 @@ class App extends Component {
 
   renderContent(value) {
     if (value === '0'){
-      return <div>Recursos listado</div>
+      return <Recursos />
     }
     else if (value === '1') {
       return <Espacios />
