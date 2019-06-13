@@ -4,7 +4,7 @@ class Recursos extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <br />
         <p>recursos.js</p>
       </div>
